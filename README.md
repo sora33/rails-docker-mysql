@@ -7,7 +7,7 @@ $ docker compose run --rm app bin/setup
 $ docker compose up
 ```
 
-初回起動の際には別タブを開いて以下のコマンドを実行する
+初回起動の際には別タブを開いて以下のコマンドを実行する（不要）
 
 ```
 $ docker-compose run app rails db:create
