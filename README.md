@@ -1,24 +1,26 @@
-# README
+# 起動方法
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+$ git clone https://github.com/sora33/rails-docker-mysql.git
+$ cd rails-docker-mysql
+$ docker-compose build
+$ docker-compose up -d
+```
 
-Things you may want to cover:
+初回起動の際には別タブを開いて以下のコマンドを実行する
 
-* Ruby version
+```
+$ docker-compose run app rails db:create
+```
 
-* System dependencies
+# Railsコンテナに入る
 
-* Configuration
+```
+$ docker-compose exec -it app bash
+```
 
-* Database creation
+# MySQLコンテナに入いる
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ docker-compose exec -it db bash
+```
