@@ -13,13 +13,15 @@ $ docker-compose up -d
 $ docker-compose run app rails db:create
 ```
 
-# Railsコンテナに入る
+##補足情報
+
+### Railsコンテナに入る
 
 ```
 $ docker-compose exec -it app bash
 ```
 
-# MySQLコンテナに入いる
+### MySQLコンテナに入る
 
 ```
 $ docker-compose exec -it db bash
