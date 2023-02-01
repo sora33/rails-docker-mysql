@@ -1,8 +1,10 @@
+FROM node:16 as node
 FROM ruby:3.0.2
-
-RUN wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
-RUN set -x && apt-get update -y -qq && apt-get install -yq nodejs yarn
+COPY --from=node /opt/yarn-* /opt/yarn
+COPY --from=node /usr/local/bin/node /usr/local/bin/
+RUN ln -fs /opt/yarn/bin/yarn /usr/local/bin/yarn \
+    && ln -fs /opt/yarn/bin/yarnpkg /usr/local/bin/yarnpkg
+RUN apt-get update -qq 
 
 RUN mkdir /app
 WORKDIR /app
