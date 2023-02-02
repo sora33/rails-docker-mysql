@@ -4,7 +4,9 @@ COPY --from=node /opt/yarn-* /opt/yarn
 COPY --from=node /usr/local/bin/node /usr/local/bin/
 RUN ln -fs /opt/yarn/bin/yarn /usr/local/bin/yarn \
     && ln -fs /opt/yarn/bin/yarnpkg /usr/local/bin/yarnpkg
-RUN apt-get update -qq 
+RUN apt-get update -qq \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /app
 WORKDIR /app
